@@ -1,25 +1,27 @@
 package negocio;
+
+import java.util.ArrayList;
 public class Catalogo {
-	Producto productos[];
+	ArrayList <Producto> listaProductos;
 	
-	Producto[] SinStock() {
-		Producto[] producto = null;
-		return producto;
-	}
-	Producto[] PocoStock() {
-		Producto[] producto = null;
-		return producto;
-	}
-	
-	void cargarProducto() {
-		
+	public Catalogo(){
+		listaProductos = new ArrayList<Producto>();
 	}
 
-	void modificarProducto() {
+	public void cargarProducto(Producto p) {
+		listaProductos.add(p);
+	}
+
+	public void modificarProducto() {
 		
 	}
 	
-	void eliminarProducto() {
+	public void eliminarProducto(int codigo) {
+		for(int i = 0; i<listaProductos.size(); i++) {
+			if(listaProductos.get(i).getCodigo() == codigo) {
+				listaProductos.remove(i);
+			}
+		}
 		
 	}
 		
