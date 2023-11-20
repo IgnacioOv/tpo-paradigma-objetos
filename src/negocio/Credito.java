@@ -2,10 +2,6 @@ package negocio;
 
 public class Credito extends Pago{
 	int cuotas;
-
-	public int getCuotas() {
-		return cuotas;
-	}
 	public int calcularPago() {
 		if (cuotas == 2 || cuotas == 3 || cuotas == 6) {
 
