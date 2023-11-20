@@ -27,4 +27,11 @@ public class Venta {
 			producto.setStock(producto.getStock() - cantidad);
 		}
 	}
+	public void setMedioPago(Pago medioPago) {
+		this.medioPago = medioPago;
+	}
+
+	public void getMonto() {
+		monto = medioPago.calcularPago();
+	}
 }

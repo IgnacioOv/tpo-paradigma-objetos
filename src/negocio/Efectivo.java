@@ -1,8 +1,10 @@
 package negocio;
 
 public class Efectivo extends Pago{
-	double descuento;
-	double calcularPago() {
-		return 0;
+
+	public int calcularPago() {
+
+		monto = (int) (monto*0.9);
+		return monto;
 	}
 }

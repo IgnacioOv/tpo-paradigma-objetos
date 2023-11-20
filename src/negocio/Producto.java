@@ -51,4 +51,14 @@ public class Producto {
 	public String getNombre() {
 		return nombre;
 	}
+
+	public void modificarProducto(int nuevoCodigo, int nuevoPrecio, int nuevoStockActual, int nuevoStockMinimo, String nuevoNombre, String nuevaDescripcion) {
+		codigo = nuevoCodigo;
+		precio = nuevoPrecio;
+		stockActual = nuevoStockActual;
+		stockMinimo = nuevoStockMinimo;
+		nombre = nuevoNombre;
+		descripcion = nuevaDescripcion;
+	}
+
 }

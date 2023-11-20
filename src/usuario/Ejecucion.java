@@ -15,6 +15,12 @@ public class Ejecucion {
         Catalogo c = new Catalogo();
         c.cargarProducto(p);
         c.mostrarCatalogo();
+
+        Credito cred = new Credito();
+        cred.setCuotas(3);
+
+
+
     }
 
 }
