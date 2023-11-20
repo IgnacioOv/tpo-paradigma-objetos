@@ -48,4 +48,7 @@ public class Producto {
 		descripcion = descripcionProducto;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
 }

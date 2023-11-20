@@ -24,5 +24,10 @@ public class Catalogo {
 		}
 		
 	}
-		
+
+	public void mostrarCatalogo() {
+		for (Producto listaProducto : listaProductos) {
+			System.out.println(listaProducto.getNombre());
+		}
+	}
 }
