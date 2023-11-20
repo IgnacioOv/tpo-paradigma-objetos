@@ -28,4 +28,24 @@ public class Producto {
 	public void setStock(int stock){
 		stockActual = stock;
 	}
+	public void setCodigo(int codigoProducto){
+		codigo = codigoProducto;
+	}
+
+	public void setPrecio(int precioProducto){
+		precio = precioProducto;
+	}
+	public int getPrecio(){
+		return precio;
+	}
+	public void setStockMinimo(int stockMinimoProducto){
+		stockMinimo = stockMinimoProducto;
+	}
+	public void setNombre(String nombreProducto){
+		nombre = nombreProducto;
+	}
+	public void setDescripcion(String descripcionProducto){
+		descripcion = descripcionProducto;
+	}
+
 }
