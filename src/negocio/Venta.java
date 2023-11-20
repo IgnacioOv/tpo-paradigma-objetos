@@ -1,19 +1,30 @@
 package negocio;
-
+import java.util.ArrayList;
+import java.util.List;
 public class Venta {
 	Producto producto;
 	int cantidad;
 	Pago medioPago;
 	double monto;
-	
-	Producto[] SinStock(){
-		Producto[] producto = null;
-		return producto;
+	private List<Producto> sinStockProductos = new ArrayList<>();
+	private List<Producto> pocoStockProductos = new ArrayList<>();
+
+	public List<Producto> SinStock() {
+		return new ArrayList<>(sinStockProductos);
 	}
-	Producto[] PocoStock(){
-		Producto[] producto = null;
-		return producto;
+	public List<Producto> PocoStock() {
+		return new ArrayList<>(pocoStockProductos);
 	}
 	
-	void RealizarVenta(){}
+	void RealizarVenta(){
+		if(producto.getStock() == 0) {
+			sinStockProductos.add(producto);
+		}
+		else if(producto.getStock() < 10) {
+			pocoStockProductos.add(producto);
+		}
+		else {
+			producto.setStock(producto.getStock() - cantidad);
+		}
+	}
 }

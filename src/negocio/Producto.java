@@ -24,4 +24,8 @@ public class Producto {
 	public int getStock(){
 		return stockActual;
 	}
+
+	public void setStock(int stock){
+		stockActual = stock;
+	}
 }
