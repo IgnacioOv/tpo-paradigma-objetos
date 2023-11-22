@@ -8,14 +8,16 @@ public class Producto {
 	String nombre;
 	String descripcion;
 	
-	public void reducirStock() {
-		stockActual--;
+	public void reducirStock(int cantidad) {
+		stockActual = stockActual - cantidad;
 	}
 	
-	public void compararStock() {
+	public boolean compararStock() {
 		if(stockActual < stockMinimo) {
 			System.out.println("El stock actual es menor al stock minimo");
+			return false;
 		}
+		return true;
 	}
 	public int getCodigo(){
 		return codigo;
@@ -60,5 +62,6 @@ public class Producto {
 		nombre = nuevoNombre;
 		descripcion = nuevaDescripcion;
 	}
+
 
 }

@@ -27,4 +27,13 @@ public class Catalogo {
 
 		}
 	}
+
+	public Producto buscarProductoPorCodigo(int codigo) {
+		for (Producto producto : listaProductos) {
+			if (producto.getCodigo() == codigo) {
+				return producto;
+			}
+		}
+		return null; // Retorna null si no se encuentra el producto
+	}
 }

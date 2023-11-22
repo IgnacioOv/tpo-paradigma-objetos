@@ -7,23 +7,6 @@ import java.util.Scanner;
 public class Ejecucion {
     public static void main(String[] args) {
         inicio();
-    	/*
-    	/*
-        Producto p = new Producto();
-        p.setStock(10);
-        p.setCodigo(1);
-        p.setPrecio(100);
-        p.setStockMinimo(5);
-        p.setNombre("Producto 1");
-        p.setDescripcion("Descripcion 1");
-
-
-        c.cargarProducto(p);
-        c.mostrarCatalogo();
-
-        Credito cred = new Credito();
-        cred.setCuotas(3);
-       */
     }
 
 
@@ -42,13 +25,69 @@ public class Ejecucion {
                 Catalogo(c,sc);
             }
             if (menu == 2) {
-                Compra();
+                Venta v = new Venta();
+                RealizarVenta(v,c,sc);
             }
         }
     }
 
 
-    public static void Compra() {
+    public static void RealizarVenta(Venta v,Catalogo c, Scanner sc) {
+       System.out.println("Ingrese el codigo del producto");
+       int cod = sc.nextInt();
+       Producto p = c.buscarProductoPorCodigo(cod);
+         if (p == null) {
+              System.out.println("El producto no existe");
+         } else {
+             v.setProducto(p);
+              System.out.println("Ingrese la cantidad que desea comprar");
+              int cant = sc.nextInt();
+              if (!p.compararStock()) {
+                System.out.println("No hay stock suficiente");
+              } else {
+                  v.setCantidad(cant);
+                p.reducirStock(cant);
+                int monto = p.getPrecio() * cant;
+                System.out.println("Elegir medio de pago");
+                System.out.println("1- Efectivo , 2- Credito , 3- Debito");
+                int medio = sc.nextInt();
+                  switch (medio) {
+                      case 1 -> {
+                          Efectivo efec = new Efectivo();
+                          efec.setMonto(monto);
+                          System.out.println("El monto a pagar es: " + efec.calcularPago());
+                          v.setMonto(efec.calcularPago());
+                          v.setMedioPago(efec);
+                      }
+                      case 2 -> {
+                          Credito cred = new Credito();
+                          System.out.println("Ingrese la cantidad de cuotas");
+                          int cuotas = sc.nextInt();
+                          cred.setCuotas(cuotas);
+                          cred.setMonto(monto);
+                          System.out.println("El monto a pagar es: " + cred.calcularPago());
+                          v.setMonto(cred.calcularPago());
+                          v.setMedioPago(cred);
+                      }
+                      case 3 -> {
+                          Debito deb = new Debito();
+                          deb.setMonto(monto);
+                          System.out.println("El monto a pagar es: " + deb.calcularPago());
+                          v.setMonto(deb.calcularPago());
+                          v.setMedioPago(deb);
+                      }
+                      default -> System.out.println("Opcion incorrecta");
+                  }
+
+              }
+
+         }
+        System.out.println("Compra realizada");
+        System.out.println("-----------------");
+        System.out.println("Se ha comprado el producto " + p.getNombre());
+        System.out.println("En cantidad de " + v.getCantidad() + " unidades");
+        System.out.println("Por un total de " + v.getMonto());
+
 
     }
 
@@ -66,7 +105,7 @@ public class Ejecucion {
             menu = scan.nextInt();
             if (menu == 1) {
                 Producto p = new Producto();
-                newProducto(p,scan);
+                newProducto(p,scan,cat);
                 Catalogo(cat,scan);
                 //Catalogo(cat)
             }
@@ -90,7 +129,7 @@ public class Ejecucion {
 
     }
 
-    public static void newProducto(Producto p, Scanner sc) {
+    public static void newProducto(Producto p, Scanner sc, Catalogo c) {
         System.out.println("Nombre Producto:");
         String nombre = sc.next();
         p.setNombre(nombre);
@@ -109,6 +148,7 @@ public class Ejecucion {
         System.out.println("Stock minimo Producto:");
         int stockMin = sc.nextInt();
         p.setStockMinimo(stockMin);
+        c.cargarProducto(p);
         System.out.println("Producto agregado");
         System.out.println("-----------------");
     }
