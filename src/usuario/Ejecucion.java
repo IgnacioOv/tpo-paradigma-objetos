@@ -8,9 +8,7 @@ public class Ejecucion {
     public static void main(String[] args) {
         inicio();
     }
-
-
-
+    
     public static void inicio() {
         Scanner sc = new Scanner(System.in);
         Catalogo c = new Catalogo();
@@ -107,28 +105,54 @@ public class Ejecucion {
                 Producto p = new Producto();
                 newProducto(p,scan,cat);
                 Catalogo(cat,scan);
-                //Catalogo(cat)
             }
             if (menu == 2) {
-                System.out.println("Todavia no esta hecho");
-
-                /// codigo
-
+                modificarProducto(scan,cat);
                 Catalogo(cat,scan);
-
             }
             if (menu == 3) {
                 System.out.println("Ingrese el codigo del producto que quiera eliminar");
                 int cod = scan.nextInt();
-                cat.eliminarProducto(cod);
-                System.out.println("Producto Eliminado");
-                System.out.println("-----------------");
-                Catalogo(cat,scan);
+                Producto p = cat.buscarProductoPorCodigo(cod);
+                if(p==null){
+                    System.out.println("El producto no existe");
+                }
+                else {
+                    cat.eliminarProducto(cod);
+                    System.out.println("Producto Eliminado");
+                    System.out.println("-----------------");
+                    Catalogo(cat, scan);
+                }
             }
         }
 
     }
-
+    public static void modificarProducto(Scanner sc, Catalogo c) {
+        System.out.println("Ingresar codigo del producto a modificar:");
+        int codigo = sc.nextInt();
+        Producto p = c.buscarProductoPorCodigo(codigo);
+        if (p==null){
+            System.out.println("El producto no existe");}
+        else {
+            System.out.println("Nuevo Nombre Producto:");
+            String nombre = sc.next();
+            p.setNombre(nombre);
+            System.out.println("Nueva Descripcion Producto:");
+            String desc = sc.next();
+            p.setDescripcion(desc);
+            System.out.println("Nuevo Precio Producto:");
+            int precio = sc.nextInt();
+            p.setPrecio(precio);
+            System.out.println("Nuevo Stock Actual Producto:");
+            int stock = sc.nextInt();
+            p.setStock(stock);
+            System.out.println("Nuevo Stock minimo Producto:");
+            int stockMin = sc.nextInt();
+            p.setStockMinimo(stockMin);
+            System.out.println("Producto modificado");
+            System.out.println("-----------------");
+        }
+    }
     public static void newProducto(Producto p, Scanner sc, Catalogo c) {
         System.out.println("Nombre Producto:");
         String nombre = sc.next();
