@@ -104,11 +104,11 @@ public class Ejecucion {
             if (menu == 1) {
                 Producto p = new Producto();
                 newProducto(p,scan,cat);
-                Catalogo(cat,scan);
+
             }
             if (menu == 2) {
                 modificarProducto(scan,cat);
-                Catalogo(cat,scan);
+
             }
             if (menu == 3) {
                 System.out.println("Ingrese el codigo del producto que quiera eliminar");
@@ -121,7 +121,7 @@ public class Ejecucion {
                     cat.eliminarProducto(cod);
                     System.out.println("Producto Eliminado");
                     System.out.println("-----------------");
-                    Catalogo(cat, scan);
+
                 }
             }
         }
