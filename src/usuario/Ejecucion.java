@@ -15,8 +15,9 @@ public class Ejecucion {
         int menu = 0;
         while (menu != -1) {
             System.out.println("BIENVENIDO AL MENU PRINCIPAL SI DESEA FINALIAR EL PROGRAMA INGRESE -1:");
-            System.out.println("1- Ver Catalogo:");
+            System.out.println("1- Operaciones en el Catalogo:");
             System.out.println("2- Realizar Compra:");
+            System.out.println("3- Ver productos del catalogo:");
             System.out.println("Elija su opcion:");
             menu = sc.nextInt();
             if (menu == 1) {
@@ -25,6 +26,9 @@ public class Ejecucion {
             if (menu == 2) {
                 Venta v = new Venta();
                 RealizarVenta(v,c,sc);
+            }
+            if (menu == 3) {
+                c.mostrarCatalogo();
             }
         }
     }

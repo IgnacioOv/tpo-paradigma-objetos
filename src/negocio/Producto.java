@@ -49,6 +49,9 @@ public class Producto {
 	public void setDescripcion(String descripcionProducto){
 		descripcion = descripcionProducto;
 	}
+	public String getDescripcion(){
+		return descripcion;
+	}
 
 	public String getNombre() {
 		return nombre;

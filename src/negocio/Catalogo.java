@@ -22,10 +22,17 @@ public class Catalogo {
 	}
 
 	public void mostrarCatalogo() {
-		for (Producto listaProducto : listaProductos) {
-			System.out.println(listaProducto.getNombre());
+		System.out.println("Catálogo de Productos:");
 
-		}
+		for (Producto producto : listaProductos) {
+			System.out.println("Código: " + producto.getCodigo());
+			System.out.println("Nombre: " + producto.getNombre());
+			System.out.println("Descripcion: " + producto.getDescripcion());
+			System.out.println("Stock: " + producto.getStock());
+			System.out.println("Precio: " + producto.getPrecio());
+			// Agrega aquí más líneas para mostrar otros atributos del producto según sea necesario
+			System.out.println("---------------");
+	}
 	}
 
 	public Producto buscarProductoPorCodigo(int codigo) {
@@ -34,6 +41,6 @@ public class Catalogo {
 				return producto;
 			}
 		}
-		return null; // Retorna null si no se encuentra el producto
+		return null;
 	}
 }
