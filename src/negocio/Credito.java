@@ -6,13 +6,13 @@ public class Credito extends Pago{
 		cuotas = cuotasPago;
 	}
 	public int calcularPago() {
-		if (cuotas == 2 || cuotas == 3 || cuotas == 6) {
+		if (cuotas == 1 ||cuotas == 2 || cuotas == 3 || cuotas == 6) {
 
 			if (cuotas == 2) {
 				monto = (int) (monto * 1.06);
 			} else if (cuotas == 3) {
 				monto = (int) (monto * 1.12);
-			} else {
+			} else if (cuotas == 6){
 				monto = (int) (monto * 1.2);
 			}
 		} else {

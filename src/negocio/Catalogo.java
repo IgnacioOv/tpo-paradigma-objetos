@@ -22,6 +22,10 @@ public class Catalogo {
 	}
 
 	public void mostrarCatalogo() {
+		if (listaProductos.isEmpty()) {
+			System.out.println("No hay productos en el catálogo");
+			return;
+		}
 		System.out.println("Catálogo de Productos:");
 
 		for (Producto producto : listaProductos) {

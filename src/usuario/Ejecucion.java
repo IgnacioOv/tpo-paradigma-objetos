@@ -6,10 +6,6 @@ import java.util.Scanner;
 
 public class Ejecucion {
     public static void main(String[] args) {
-        inicio();
-    }
-    
-    public static void inicio() {
         Scanner sc = new Scanner(System.in);
         Catalogo c = new Catalogo();
         int menu = 0;
@@ -21,7 +17,7 @@ public class Ejecucion {
             System.out.println("Elija su opcion:");
             menu = sc.nextInt();
             if (menu == 1) {
-                Catalogo(c,sc);
+                operacionesCatalogo(c,sc);
             }
             if (menu == 2) {
                 Venta v = new Venta();
@@ -32,7 +28,6 @@ public class Ejecucion {
             }
         }
     }
-
 
     public static void RealizarVenta(Venta v,Catalogo c, Scanner sc) {
        System.out.println("Ingrese el codigo del producto");
@@ -80,26 +75,22 @@ public class Ejecucion {
                       }
                       default -> System.out.println("Opcion incorrecta");
                   }
+                  System.out.println("Compra realizada");
+                  System.out.println("-----------------");
+                  System.out.println("Se ha comprado el producto " + p.getNombre());
+                  System.out.println("En cantidad de " + v.getCantidad() + " unidades");
+                  System.out.println("Por un total de " + v.getMonto());
 
               }
-
          }
-        System.out.println("Compra realizada");
-        System.out.println("-----------------");
-        System.out.println("Se ha comprado el producto " + p.getNombre());
-        System.out.println("En cantidad de " + v.getCantidad() + " unidades");
-        System.out.println("Por un total de " + v.getMonto());
-
-
     }
 
 
-    public static void Catalogo(Catalogo cat, Scanner scan) {
-        cat.mostrarCatalogo();
+    public static void operacionesCatalogo(Catalogo cat, Scanner scan) {
         int menu = 0;
         while (menu != 4) {
             System.out.println("-----------------");
-            System.out.println("ESTE ES EL CATALOGO ACTUAL QUE DESEA HACER:");
+            System.out.println("OPCIONES PARA OPERAR CON EL CATALOGO:");
             System.out.println("1- Agregar Producto:");
             System.out.println("2- Modificar Producto:");
             System.out.println("3- Eliminar Producto");
