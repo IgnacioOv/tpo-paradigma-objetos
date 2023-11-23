@@ -34,6 +34,9 @@ public class Catalogo {
 			System.out.println("Descripcion: " + producto.getDescripcion());
 			System.out.println("Stock: " + producto.getStock());
 			System.out.println("Precio: " + producto.getPrecio());
+			if(!producto.compararStock()) {
+				System.out.println("ATENCION: EL PRODUCTO ESTA POR DEBAJO DEL STOCK MINIMO");
+			}
 			// Agrega aquí más líneas para mostrar otros atributos del producto según sea necesario
 			System.out.println("---------------");
 	}

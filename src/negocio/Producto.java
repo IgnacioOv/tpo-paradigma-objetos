@@ -14,7 +14,6 @@ public class Producto {
 	
 	public boolean compararStock() {
 		if(stockActual < stockMinimo) {
-			System.out.println("El stock actual es menor al stock minimo");
 			return false;
 		}
 		return true;
